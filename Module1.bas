@@ -42,3 +42,44 @@ Sub DQAnalysis()
     Range("C4").Value = (endingPrice / startingPrice) - 1
     
 End Sub
+
+
+Sub AllStocksAnalysis()
+
+    Worksheets("All Stocks Analysis").Activate
+
+    Range("A1").Value = "All Stocks (2018)"
+
+    ' Create a header row
+    Range("A3").Value = "Ticker"
+    Range("B3").Value = "Total Daily Volume"
+    Range("C3").Value = "Return"
+    
+    ' Array to hold 12 tickers
+    Dim tickers(11) As String
+    tickers(0) = "AY"
+    tickers(1) = "CSIQ"
+    tickers(2) = "DQ"
+    tickers(3) = "ENPH"
+    tickers(4) = "FSLR"
+    tickers(5) = "HASI"
+    tickers(6) = "JKS"
+    tickers(7) = "RUN"
+    tickers(8) = "SEDG"
+    tickers(9) = "SPWR"
+    tickers(10) = "TERP"
+    tickers(11) = "VSLR"
+    
+    Dim startValue, endValue As Integer
+    startValue = 1
+    endValue = 10
+    
+    For i = startValue To endValue
+        ticker = tickers(i)
+        For j = startValue To endValue
+        Cells(i, j).Value = i + j
+        Cells(i, j).Clear
+        Next j
+    Next i
+
+End Sub
