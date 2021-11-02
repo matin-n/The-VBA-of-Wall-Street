@@ -1,16 +1,19 @@
 Attribute VB_Name = "Module1"
 Sub DQAnalysis()
 
+    ' Get user input on the year they would like to run analysis on
+    yearValue = InputBox("What year would you like to run the analysis on?")
+
     Worksheets("DQ Analysis").Activate
     
     Range("A1").Value = "DAQO (Ticker: DQ)"
-
+    
     'Create a header row
     Cells(3, 1).Value = "Year"
     Cells(3, 2).Value = "Total Daily Volume"
     Cells(3, 3).Value = "Return"
          
-    Worksheets("2018").Activate
+    Worksheets(yearValue).Activate
     Dim totalVolume, rowStart, rowEnd As Integer
     Dim startingPrice, endingPrice As Double
     totalVolume = 0
@@ -37,17 +40,20 @@ Sub DQAnalysis()
     Next i
     
     Worksheets("DQ Analysis").Activate
-    Range("A4").Value = 2018
+    Range("A4").Value = yearValue
     Range("B4").Value = totalVolume
     Range("C4").Value = (endingPrice / startingPrice) - 1
     
 End Sub
 
 Sub AllStocksAnalysis()
-    
+
+    ' Get user input on the year they would like to run analysis on
+    yearValue = InputBox("What year would you like to run the analysis on?")
+      
     ' 1) Format the output sheet on All Stocks Analysis worksheet
     Worksheets("All Stocks Analysis").Activate
-    Range("A1").Value = "All Stocks (2018)"
+    Range("A1").Value = "All Stocks (" + yearValue + ")"
     
     ' Create a header row
     Range("A3").Value = "Ticker"
@@ -74,7 +80,7 @@ Sub AllStocksAnalysis()
     Dim endingPrice As Double
     
     ' 3b) Activate data worksheet
-    Worksheets("2018").Activate
+    Worksheets(yearValue).Activate
     
     ' 3c) Get the number of rows to loop over
     RowCount = Cells(Rows.Count, "A").End(xlUp).Row
@@ -84,7 +90,7 @@ Sub AllStocksAnalysis()
         ticker = tickers(i)
         totalVolume = 0
         ' 5) loop through rows in the data
-        Worksheets("2018").Activate
+        Worksheets(yearValue).Activate
         For j = 2 To RowCount
             ' 5a) Find total volume for current ticker
             If Cells(j, 1).Value = ticker Then
@@ -109,8 +115,15 @@ Sub AllStocksAnalysis()
         Cells(4 + i, 3).Value = endingPrice / startingPrice - 1
     Next i
     
+    Call formatAllStocksAnalysisTable
 End Sub
 
+'Sub yearValueAnalysis()
+
+    ' yearValue = InputBox("What year would you like to run the analysis on?")
+    ' Range("A1").Value = "All Stocks (" + yearValue + ")"
+
+'End Sub
 
 Sub formatAllStocksAnalysisTable()
 
@@ -139,4 +152,8 @@ Sub formatAllStocksAnalysisTable()
         End If
     Next i
     
+End Sub
+
+Sub ClearWorksheet()
+    Cells.Clear
 End Sub
