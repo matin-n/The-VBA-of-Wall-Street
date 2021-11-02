@@ -48,8 +48,14 @@ End Sub
 
 Sub AllStocksAnalysis()
 
+    ' Determine how look it takes to execute this routine
+    Dim startTime, endTime As Single
+    
     ' Get user input on the year they would like to run analysis on
     yearValue = InputBox("What year would you like to run the analysis on?")
+    
+    ' Time of when routine starts
+    startTime = Timer
       
     ' 1) Format the output sheet on All Stocks Analysis worksheet
     Worksheets("All Stocks Analysis").Activate
@@ -114,6 +120,12 @@ Sub AllStocksAnalysis()
         Cells(4 + i, 2).Value = totalVolume
         Cells(4 + i, 3).Value = endingPrice / startingPrice - 1
     Next i
+    
+    ' Time when routine ends
+    endTime = Timer
+    
+    ' Calculate and output how long routine took by subtracting endTime by startTime
+    MsgBox ("This code ran in " & (endTime - startTime) & " seconds for the year " & (yearValue))
     
     Call formatAllStocksAnalysisTable
 End Sub
