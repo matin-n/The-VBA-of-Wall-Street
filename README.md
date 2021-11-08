@@ -23,7 +23,7 @@ By looking at the tables, we can see that the year 2017 had a higher rate of ret
 
 ## Analysis of Original and Refactored Code
 
-#### Original code
+### Original code
 
 1. To allow for future data analysis and not hardcode the data, the script asks the user to input the year they would like to analyze
 
@@ -158,13 +158,13 @@ MsgBox "This code ran in " & (endTime - startTime) & " seconds for the year " & 
 There are two variables `startTime` and `endTime`. When the code begins the `startTime` and when ending the `endTime` is set equal to the `Timer` function. Subtracting the `startTime` from the `endTime` indicates how long the code took to execute.
 
 
-#### Original Execution Timer
+### Original Execution Timer
 
  ![2017 Original Execution Timer](https://github.com/matin-n/stock-analysis/blob/main/Resources/VBA_Challenge_Original_Time_2017.png?raw=true)
 
  ![2018 Original Execution Timer](https://github.com/matin-n/stock-analysis/blob/main/Resources/VBA_Challenge_Original_Time_2018.png?raw=true)
 
-#### Refactored Execution Timer
+### Refactored Execution Timer
 
 ![2017 Refactored Execution Timer](https://github.com/matin-n/stock-analysis/blob/main/Resources/VBA_Challenge_Refactored_2017.png?raw=true)
 
