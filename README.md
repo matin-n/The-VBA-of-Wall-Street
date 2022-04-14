@@ -13,10 +13,10 @@ This project aims to analyze stock data from 2017 and 2018 to calculate the year
 Running the VBA script produces the following tables:
 
 #### 2017 Stock Analysis
- ![2017 Stock Analysis](https://github.com/matin-n/stock-analysis/blob/main/Resources/VBA_Challenge_2017_Results.png?raw=true)
+ ![2017 Stock Analysis](Resources/VBA_Challenge_2017_Results.png)
 
 #### 2018 Stock Analysis
- ![2018 Stock Analysis](https://github.com/matin-n/stock-analysis/blob/main/Resources/VBA_Challenge_2018_Results.png?raw=true)
+ ![2018 Stock Analysis](Resources/VBA_Challenge_2018_Results.png)
 
 By looking at the tables, we can see that the year 2017 had a higher rate of return compared to 2018. The companies `$ENPH` and `$RUN` are worthwhile to research as they both survived the bear market of 2018. However, within our dataset, we do not have enough information to deduce why these two companies had a higher rate of return. For instance, we do not have access to the shares outstanding to determine the market capitalization. It is a possibility that the companies that had positive returns in 2018 were undervalued in 2017, and the market corrected their share price. However, this is purely speculation, and there is no robust evidence to support this statement.
 
@@ -25,7 +25,7 @@ By looking at the tables, we can see that the year 2017 had a higher rate of ret
 
 ### Original code
 
-1. To allow for future data analysis and not hardcode the data, the script asks the user to input the year they would like to analyze
+1. The script asks the user to input the year they would like to analyze to allow future data analysis and not hardcode the data:
 
 ```vba
 yearValue = InputBox("What year would you like to run the analysis on?")
@@ -47,7 +47,7 @@ Range("B3").Value = "Total Daily Volume"
 Range("C3").Value = "Return"
 ```
 
-3. An Array is initialized to assign each of the tickers to an element in the array.
+3. An Array is initialized to assign each ticker to an element in the array:
 
 ```vba
 Dim tickers(11) As String
@@ -78,7 +78,7 @@ Worksheets(yearValue).Activate
 RowCount = Cells(Rows.Count, "A").End(xlUp).Row
 ```
 
-5. The script utilities a nested loop to iterate through the array of each ticker. The `totalVolume = 0` is set to 0 for each ticker. The inner loop goes through the rows to calculate each ticker's total volume, starting price, and ending price.
+5. The script utilizes a nested loop to iterate through the array of each ticker. The `totalVolume = 0` is set to 0 for each ticker. The inner loop goes through the rows to calculate each ticker's total volume, starting price, and ending price.
 
 ```vba
 ' 4) Loop through tickers
@@ -112,7 +112,7 @@ For i = 0 To 11
 Next i
 ```
 
-6. Finally, the script makes the table easier to read by adding formatting. The header row has a bold font with a line border on the bottom to visually indicate the column names. The column width is automatically changed to auto-fit the data by using the `AutoFit` property. Color formatting is applied using a for loop to iterate through each cell to determine whether the yearly return is positive or negative. If positive, the interior color will turn green, and if negative, the interior color will be red.
+6. Finally, the script makes the table easier to read by adding formatting. The header row has a bold font with a line border on the bottom to visually indicate the column names. The column width is automatically changed to auto-fit the data using the `AutoFit` property. Color formatting is applied using a for loop to iterate through each cell to determine whether the yearly return is positive or negative. If positive, the interior color will turn green, and if negative, the interior color will be red.
 
 ```vba
 ' Formatting
@@ -155,20 +155,20 @@ endTime = Timer
 MsgBox "This code ran in " & (endTime - startTime) & " seconds for the year " & (yearValue)
 ```
 
-There are two variables `startTime` and `endTime`. When the code begins the `startTime` and when ending the `endTime` is set equal to the `Timer` function. Subtracting the `startTime` from the `endTime` indicates how long the code took to execute.
+There are two variables, `startTime` and `endTime`. When the code begins, the `startTime` and when ending the, `endTime` is set equal to the `Timer` function. Subtracting the `startTime` from the `endTime` indicates how long the code took to execute.
 
 
 ### Original Execution Timer
 
- ![2017 Original Execution Timer](https://github.com/matin-n/stock-analysis/blob/main/Resources/VBA_Challenge_Original_Time_2017.png?raw=true)
+ ![2017 Original Execution Timer](Resources/VBA_Challenge_Original_Time_2017.png)
 
- ![2018 Original Execution Timer](https://github.com/matin-n/stock-analysis/blob/main/Resources/VBA_Challenge_Original_Time_2018.png?raw=true)
+ ![2018 Original Execution Timer](Resources/VBA_Challenge_Original_Time_2018.png)
 
 ### Refactored Execution Timer
 
-![2017 Refactored Execution Timer](https://github.com/matin-n/stock-analysis/blob/main/Resources/VBA_Challenge_Refactored_2017.png?raw=true)
+![2017 Refactored Execution Timer](Resources/VBA_Challenge_Refactored_2017.png)
 
-![2018 Refactored Execution Timer](https://github.com/matin-n/stock-analysis/blob/main/Resources/VBA_Challenge_Refactored_2018.png?raw=true)
+![2018 Refactored Execution Timer](Resources/VBA_Challenge_Refactored_2018.png)
 
 ## Summary
 
@@ -193,4 +193,4 @@ The disadvantages of refactoring code include:
 
 ### Advantages and disadvantages of the original and refactored
 
-The main advantage of refactoring the stock analysis code is how long the script took to execute the calculations. There was a speedup time of over 700% in the refactored code when compared to the original. The few seconds of reduction may seem insignificant, but the speedup time will be a significant factor when analyzing larger datasets. In this case, there were no disadvantages of refactoring the code besides the time spent.
+The main advantage of refactoring the stock analysis code is how long the script took to execute the calculations. There was a speedup time of over 700% in the refactored code compared to the original. The few seconds of reduction may seem insignificant, but the speedup time will be a significant factor when analyzing larger datasets. There were no apparent disadvantages of refactoring the code besides the time spent in this case.
