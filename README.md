@@ -1,4 +1,4 @@
-# VBA of Wall Street
+# The VBA of Wall Street
 
 ## Overview of Project
 
